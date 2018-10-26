@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -41,7 +42,7 @@ public class PageController {
 	}
 	
 	@RequestMapping(value="/pages", method=RequestMethod.POST)
-	public ResponseBean addPage(Page page) throws BaseException {
+	public ResponseBean addPage(@RequestBody Page page) throws BaseException {
 		int result = pageService.savePage(page);
 		
 		return new ResponseBean(HttpStatus.OK, result);
